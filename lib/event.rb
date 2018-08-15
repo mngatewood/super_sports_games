@@ -14,4 +14,8 @@ class Event
     ages.max.to_i
   end
 
+  def min_age
+    ages.min.to_i
+  end
+
 end
