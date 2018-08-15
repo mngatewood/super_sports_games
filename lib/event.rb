@@ -18,4 +18,8 @@ class Event
     ages.min.to_i
   end
 
+  def average_age
+    (ages.sum.to_f / ages.count).round(1)
+  end
+
 end
