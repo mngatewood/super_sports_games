@@ -10,4 +10,8 @@ class Event
     @ages = ages
   end
 
+  def max_age
+    ages.max.to_i
+  end
+
 end
