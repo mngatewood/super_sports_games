@@ -35,6 +35,6 @@ class Event
     return Math.sqrt(ages_diff_squared_avg).round(2)
   end
 
-binding.pry
+# binding.pry
 
 end
