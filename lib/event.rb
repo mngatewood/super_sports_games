@@ -1,5 +1,7 @@
 # event.rb
 
+require 'pry'
+
 class Event
 
   attr_reader :name,
@@ -32,5 +34,7 @@ class Event
     # Return the square root of the average calculated above
     return Math.sqrt(ages_diff_squared_avg).round(2)
   end
+
+binding.pry
 
 end
