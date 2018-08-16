@@ -69,8 +69,12 @@ def add_event(games, name, ages)
 end
 
 def view_summary_dialog(games)
-  # if events.length == 0, print "Nothing to display"
-  puts "View summary data"
+  if games.events.length == 0
+    puts "**NO EVENTS TO DISPLAY** Please add an event."
+  else
+    puts games.summary
+  end
+  main_prompt_dialog(games)
 end
 
 initialize_session
