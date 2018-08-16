@@ -26,7 +26,13 @@ def main_prompt_dialog(games)
 end
 
 def get_event_data(games)
-  puts "Get event data"
+  get_name(games)
+end
+
+def get_name(games) 
+  print "Enter the name of the event: "
+  name = gets.chomp.to_s
+  puts name
 end
 
 def view_summary_dialog(games)
