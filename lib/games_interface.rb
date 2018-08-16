@@ -26,14 +26,42 @@ def main_prompt_dialog(games)
 end
 
 def get_event_data(games)
-  get_name(games)
+  name = get_name(games)
+  ages = get_ages(games, name)
+  puts name 
+  p ages
 end
 
 def get_name(games) 
   print "Enter the name of the event: "
   name = gets.chomp.to_s
-  puts name
+  return name
 end
+
+def get_ages(games, name)
+  ages = []
+  input = ""
+  competitor_ordinal = "first"
+  while input != "F" && input != "C"
+    if ages.count > 0
+      competitor_ordinal = "next"
+    end 
+    puts "Name: #{name}; Ages: #{ages}"
+    print "Enter the age of the #{competitor_ordinal} competitor, (F)inish, or (C)ancel. "
+    input = gets.chomp.upcase
+    if input == "C"
+      puts "**CANCELLED**"
+      main_prompt_dialog(games)
+    elsif input == "F"
+      return ages
+    elsif input.to_i.to_s == input
+      ages.push(input.to_i)
+    else
+      puts "**Invalid input.**  Please enter a valid age (number), (F)inish, or (C)ancel."
+    end
+  end
+end
+
 
 def view_summary_dialog(games)
   puts "View summary data"
