@@ -4,10 +4,17 @@ require 'pry'
 
 def initialize_session
   puts "Welcome to Games Interface."
-  print "Enter the year of the games to begin: "
-  year = gets.chomp
-  games = Games.new(year)
-  main_prompt_dialog(games)
+  year = ""
+  while year.to_i < 1896 || year.to_i > 2018
+    print "Enter the year of the games to begin: "
+    year = gets.chomp
+    if year.to_i < 1896 || year.to_i > 2018
+      puts "**INVALID INPUT** Please enter a valid year between 1986 and 2018."
+    else
+      games = Games.new(year)
+      main_prompt_dialog(games)
+    end
+  end
 end
 
 def main_prompt_dialog(games)
@@ -56,7 +63,7 @@ def get_ages(games, name)
     elsif input.to_i.to_s == input
       ages.push(input.to_i)
     else
-      puts "**Invalid input.**  Please enter a valid age (number), (F)inish, or (C)ancel."
+      puts "**INVALID INPUT.**  Please enter a valid age (number), (F)inish, or (C)ancel."
     end
   end
 end
