@@ -28,8 +28,7 @@ end
 def get_event_data(games)
   name = get_name(games)
   ages = get_ages(games, name)
-  puts name 
-  p ages
+  add_event(games, name, ages)
 end
 
 def get_name(games) 
@@ -62,8 +61,15 @@ def get_ages(games, name)
   end
 end
 
+def add_event(games, name, ages)
+  event = Event.new(name, ages)
+  games.add_event(event)
+  puts "**EVENT ADDED** Name: #{event.name}; Ages: #{event.ages}"
+  main_prompt_dialog(games)
+end
 
 def view_summary_dialog(games)
+  # if events.length == 0, print "Nothing to display"
   puts "View summary data"
 end
 
