@@ -1,5 +1,7 @@
-require './games'
-require './event'
+# games_interface.rb
+
+require './lib/games'
+require './lib/event'
 require 'pry'
 
 def initialize_session
@@ -19,6 +21,7 @@ end
 
 def main_prompt_dialog(games)
   input = ""
+  # better way to write condition?
   while input != "A" && input != "V" && input != "X"
     print "(A)dd an event, (V)iew the Summary of Events, or e(X)it. "
     input = gets.chomp.upcase
@@ -44,10 +47,12 @@ def get_name(games)
   return name
 end
 
+# Refactor get_ages method
 def get_ages(games, name)
   ages = []
   input = ""
   competitor_ordinal = "first"
+  # better way to write condition?
   while input != "F" && input != "C"
     if ages.count > 0
       competitor_ordinal = "next"
@@ -59,7 +64,12 @@ def get_ages(games, name)
       puts "**CANCELLED**"
       main_prompt_dialog(games)
     elsif input == "F"
-      return ages
+      if ages.count > 0
+        return ages
+      else
+        puts "**NO AGES ENTERED** Please enter at least one competitor age."
+        input = ""
+      end
     elsif input.to_i.to_s == input
       ages.push(input.to_i)
     else
