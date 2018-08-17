@@ -1,5 +1,7 @@
-require './games'
-require './event'
+# games_interface.rb
+
+require './lib/games'
+require './lib/event'
 require 'pry'
 
 def initialize_session
